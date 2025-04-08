@@ -1,4 +1,4 @@
-PERADIGM: Phenotype Embedding Similarity-based Rare Disease Gene Mapping
+### PERADIGM: Phenotype Embedding Similarity-based Rare Disease Gene Mapping
 
 This repository contains the R code used for the analysis described in the paper:
 
