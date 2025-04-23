@@ -7,5 +7,5 @@ https://www.biorxiv.org/content/10.1101/2025.04.01.646670v1
 
 The code consists of two main files:
 
-1. main.R: The primary script that orchestrates data loading, pre-processing, analysis, and output generation.
+1. main.R: The primary script that includes data loading, pre-processing, analysis, and output generation.
 2. function.R: A collection of functions supporting the analysis, including regression testing, embedding computations, similarity scoring, carrier processing, and permutation testing.
