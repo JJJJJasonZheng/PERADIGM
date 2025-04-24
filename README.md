@@ -42,7 +42,6 @@ data/
 │   └── gene_info.RData
 ├── embedding/
 │   └── hesin_icd10_descrip_embed.txt
-├── wes470K_fam.txt
 └── hesin_diag.txt   # Optional/redundant diagnosis file
 ```
 
