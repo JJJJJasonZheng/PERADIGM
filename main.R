@@ -33,7 +33,6 @@ options(scipen = 999)
 # │   │   └── gene_info.RData
 # │   ├── embedding
 # │   │   └── hesin_icd10_descrip_embed.txt
-# │   ├── wes470K_fam.txt
 # │   └── hesin_diag.txt          # redundant diagnosis file
 #
 # Load main RData files
@@ -49,10 +48,6 @@ ICD10_mapping <- fread("data/icd_related/ICD10_mapping.csv")
 
 # Load gene information
 load("data/generate_all_gene_pos/gene_info.RData")  # loads gene_info
-
-# Load the family data and get unique IDs
-eid_500k <- fread("data/wes470K_fam.txt")
-eid_500k <- unique(eid_500k$eid)
 
 # Subset diagnosis data from the main dataset using eid_all list
 hesin_diag_200k <- hesin_diag_all[hesin_diag_all$eid %in% eid_all, ]
