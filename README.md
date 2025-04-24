@@ -21,7 +21,6 @@ PERADIGM is a framework that integrates phenotype embedding and patient similari
   - Similarity scoring  
   - Regression-based testing  
   - Carrier/control selection  
-  - Permutation testing and visualization  
 
 ---
 
@@ -29,22 +28,23 @@ PERADIGM is a framework that integrates phenotype embedding and patient similari
 
 Place your data files using the following directory structure:
 
-├── data
-│   ├── R_doc
-│   │   ├── hesin_diag_all_new.RData
-│   │   ├── eid_all.RData
-│   │   ├── cov_adjust.RData
-│   │   └── IC_hesin_500k.csv
-│   ├── icd_related
-│   │   └── ICD10_mapping.csv
-│   ├── generate_all_gene_pos
-│   │   └── gene_info.RData
-│   ├── embedding
-│   │   └── hesin_icd10_descrip_embed.txt
-│   ├── wes470K_fam.txt
-│   └── hesin_diag.txt   # Optional/redundant diagnosis file
 
----
+```text
+data/
+├── R_doc/
+│   ├── hesin_diag_all_new.RData
+│   ├── eid_all.RData
+│   ├── cov_adjust.RData
+│   └── IC_hesin_500k.csv
+├── icd_related/
+│   └── ICD10_mapping.csv
+├── generate_all_gene_pos/
+│   └── gene_info.RData
+├── embedding/
+│   └── hesin_icd10_descrip_embed.txt
+├── wes470K_fam.txt
+└── hesin_diag.txt   # Optional/redundant diagnosis file
+```
 
 ## 🔧 Getting Started
 
