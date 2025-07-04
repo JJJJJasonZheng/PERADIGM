@@ -2,7 +2,7 @@
 **Phenotype Embedding Similarity-based Rare Disease Gene Mapping**
 
 This repository contains the R and Python code supporting the analysis described in the paper:  
-**[PERADIGM: Phenotype Embedding Similarity-based Rare Disease Gene Mapping](https://www.biorxiv.org/content/10.1101/2025.04.01.646670v1)**
+**[PERADIGM: Phenotype Embedding Similarity-based Rare Disease Gene Mapping](https://www.biorxiv.org/content/10.1101/2025.04.01.646670v2)**
 
 ---
 
