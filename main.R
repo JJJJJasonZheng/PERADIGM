@@ -209,9 +209,9 @@ save(gene_risk_pvalue, file = outputfile)
 print("riskscore_gene finished!")
 
 # =============================================================================
-# BOOTSTRAP ANALYSIS TO COMPUTE GENE-RISK STATISTICS
+# RANDOM-SAMPLE ANALYSIS TO COMPUTE GENE-RISK STATISTICS
 # =============================================================================
-# Load necessary files for bootstrap analysis
+# Load necessary files for random-sample analysis
 load(paste0("data/riskscore_summary/riskscore/", phenotype, "_riskscore_eur_weighted_IC_rare_all_diseaseCompare.RData"))
 load(paste0("data/riskscore_summary/riskscore/", phenotype, "_gene_riskscore_weighted_IC_rare_all_diseaseCompare.RData"))
 load("data/gene_carriers_num.RData")   # Ensure this file is in the data/ folder
@@ -219,31 +219,31 @@ load("data/gene_carriers_num.RData")   # Ensure this file is in the data/ folder
 # If merging with gene_carriers_num is needed, do so here.
 gene_risk_pvalue_num <- gene_risk_pvalue
 disease_result$simi_score <- as.numeric(disease_result$simi_score)
-n_bootstrap <- 10000
-gene_risk_pvalue_num$p_value_bootstrap <- NA
+n_random_sample <- 10000
+gene_risk_pvalue_num$p_value_random_sample <- NA
 
-# Loop through each gene to perform bootstrap sampling and calculate p-values
+# Loop through each gene to perform random sampling and calculate p-values
 for (j in 1:nrow(gene_risk_pvalue_num)) {
   gene <- gene_risk_pvalue_num$gene[j]
   carrier_num <- gene_risk_pvalue_num$carriers_num[j]
-  bootstrap_means <- numeric(n_bootstrap)
+  random_sample_means <- numeric(n_random_sample)
   
-  for (i in 1:n_bootstrap) {
-    bootstrap_sample <- sample(disease_result$simi_score, size = carrier_num, replace = TRUE)
-    bootstrap_means[i] <- mean(bootstrap_sample, na.rm = TRUE)
+  for (i in 1:n_random_sample) {
+    random_sample <- sample(disease_result$simi_score, size = carrier_num, replace = TRUE)
+    random_sample_means[i] <- mean(random_sample, na.rm = TRUE)
   }
   
   observed_mean <- as.numeric(gene_risk_pvalue_num$riskscore[j])
-  bootstrap_mean <- mean(bootstrap_means)
-  bootstrap_sd <- sd(bootstrap_means)
-  z_score <- (observed_mean - bootstrap_mean) / bootstrap_sd
+  random_sample_mean <- mean(random_sample_means)
+  random_sample_sd <- sd(random_sample_means)
+  z_score <- (observed_mean - random_sample_mean) / random_sample_sd
   p_value <- 1 - pnorm(z_score)
-  gene_risk_pvalue_num$p_value_bootstrap[j] <- p_value
+  gene_risk_pvalue_num$p_value_random_sample[j] <- p_value
   
   if (j %% 100 == 0) { cat(j, " ") }
 }
 
-# Save the final bootstrap results using a relative file path
+# Save the final random-sample results using a relative file path
 outputfile <- paste0("data/riskscore_summary/riskscore/", phenotype,
-                     "_gene_riskscore_weighted_IC_rare_all_diseaseCompare_bootstrap.RData")
+                     "_gene_riskscore_weighted_IC_rare_all_diseaseCompare_random_sample.RData")
 save(gene_risk_pvalue_num, file = outputfile)
