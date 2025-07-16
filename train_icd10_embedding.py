@@ -59,7 +59,7 @@ def generate_icd_embeddings(
     sentences = df_aggregated['tokens'].tolist()
 
     print(f"Training Word2Vec on {len(sentences)} sentences...")
-    model = Word2Vec(sentences, vector_size=100, window=5, min_count=1, workers=4)
+    model = Word2Vec(sentences, vector_size=100, window=5, min_count=1, workers=4, sg=0)
 
     print(f"Loading ICD-10 mapping: {icd_mapping_path}")
     icd_description = pd.read_csv(icd_mapping_path)
